@@ -3,7 +3,7 @@ import { BarChart3, Database, Users, ExternalLink } from 'lucide-react';
 
 export default function Projects({ theme, isDarkMode }) {
   return (
-    <section id="projects" className="py-24 border-t border-[#077A7D]/20">
+    <section id="projects" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-[#077A7D]/20">
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>

@@ -66,22 +66,34 @@ export default function App() {
       
       {/* NAVIGATION */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md border-b ${
-        isScrolled ? `${theme.navBg} border-[#077A7D]/30 py-3 shadow-lg shadow-[#06202B]/10` : 'bg-transparent border-transparent py-5'
+        isScrolled ? `${theme.navBg} border-[#077A7D]/30 py-3 shadow-lg shadow-[#06202B]/10` : 'bg-transparent border-transparent py-3 md:py-5'
       }`}>
-        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <div className="font-bold text-xl tracking-tight flex items-center gap-2">
-            <div className={`w-8 h-8 rounded-lg ${theme.accentBg} flex items-center justify-center text-[#F5EEDD] text-sm font-bold shadow-md shadow-[#FE7F2D]/20`}>
-              DS
+        <div className="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
+          
+          <div className="w-full md:w-auto flex justify-between items-center">
+            <div className="font-bold text-xl tracking-tight flex items-center gap-2">
+              <div className={`w-8 h-8 rounded-lg ${theme.accentBg} flex items-center justify-center text-[#F5EEDD] text-sm font-bold shadow-md shadow-[#FE7F2D]/20`}>
+                BR
+              </div>
+              <span>bistianafn29</span>
             </div>
-            <span>DataScience.</span>
+            
+            {/* Tombol Dark Mode dipindah ke sini untuk versi HP */}
+            <button 
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className={`md:hidden p-2 rounded-full border transition-colors ${theme.card} hover:${theme.text}`}
+            >
+              {isDarkMode ? <Sun size={18} className="text-[#FE7F2D]" /> : <Moon size={18} className="text-[#077A7D]" />}
+            </button>
           </div>
           
-          <div className="hidden md:flex items-center gap-2 p-1 rounded-full border border-[#077A7D]/20" style={{ backgroundColor: isDarkMode ? 'rgba(33, 94, 97, 0.3)' : 'rgba(122, 226, 207, 0.2)' }}>
+          {/* Menu Items - Bisa di-scroll menyamping di HP (overflow-x-auto) */}
+          <div className="w-full md:w-auto flex items-center gap-2 p-1 rounded-full border border-[#077A7D]/20 overflow-x-auto hide-scrollbar" style={{ backgroundColor: isDarkMode ? 'rgba(33, 94, 97, 0.3)' : 'rgba(122, 226, 207, 0.2)' }}>
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+                className={`whitespace-nowrap px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
                   activeSection === item.id 
                     ? `${theme.accentBg} text-[#F5EEDD] shadow-md shadow-[#FE7F2D]/30` 
                     : `${theme.textMuted} hover:${theme.text}`
@@ -92,12 +104,14 @@ export default function App() {
             ))}
           </div>
 
+          {/* Tombol Dark Mode untuk Desktop */}
           <button 
             onClick={() => setIsDarkMode(!isDarkMode)}
-            className={`p-2 rounded-full border transition-colors ${theme.card} hover:${theme.text}`}
+            className={`hidden md:block p-2 rounded-full border transition-colors ${theme.card} hover:${theme.text}`}
           >
             {isDarkMode ? <Sun size={20} className="text-[#FE7F2D]" /> : <Moon size={20} className="text-[#077A7D]" />}
           </button>
+
         </div>
       </nav>
 

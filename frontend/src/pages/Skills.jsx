@@ -3,7 +3,7 @@ import { Terminal } from 'lucide-react';
 
 export default function Skills({ theme, isDarkMode }) {
   return (
-    <section id="skills" className="py-24 border-t border-[#077A7D]/20">
+    <section id="skills" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-[#077A7D]/20">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Stack</h2>
         <p className={`${theme.textMuted} max-w-2xl mx-auto`}>The tools and technologies I use to extract insights and build predictive models.</p>

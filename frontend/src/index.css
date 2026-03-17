@@ -5,7 +5,9 @@
 /* Custom CSS tambahan (opsional) */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px; 
 }
+
 
 /* Jika Anda ingin menghilangkan scrollbar default di webkit (opsional, untuk tampilan lebih bersih) */
 ::-webkit-scrollbar {
