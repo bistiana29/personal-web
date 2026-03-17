@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: personal_web_frontend
+    ports:
+      # Port Vite default
+      - "5173:5173"
+    volumes:
+      # Mapping folder lokal ke dalam kontainer (kunci agar Hot-Reload jalan)
+      - ./frontend:/app
+      # Hindari menimpa node_modules di dalam kontainer dengan lokal
+      - /app/node_modules
+    restart: unless-stopped
