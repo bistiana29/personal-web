@@ -5,7 +5,7 @@ export default function Dashboard({ theme, isDarkMode }) {
   return (
     <section id="dashboard" className="py-24 border-t border-[#077A7D]/20">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Portfolio Analytics Dashboard</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Guest Analytics Dashboard</h2>
         <p className={theme.textMuted}>A live demonstration of my data tracking capabilities. This is real-time (mocked) data of how users interact with this portfolio.</p>
       </div>
 

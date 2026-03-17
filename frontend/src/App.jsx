@@ -73,7 +73,7 @@ export default function App() {
             <div className={`w-8 h-8 rounded-lg ${theme.accentBg} flex items-center justify-center text-[#F5EEDD] text-sm font-bold shadow-md shadow-[#FE7F2D]/20`}>
               DS
             </div>
-            <span>DataScientist.</span>
+            <span>DataScience.</span>
           </div>
           
           <div className="hidden md:flex items-center gap-2 p-1 rounded-full border border-[#077A7D]/20" style={{ backgroundColor: isDarkMode ? 'rgba(33, 94, 97, 0.3)' : 'rgba(122, 226, 207, 0.2)' }}>
@@ -111,7 +111,7 @@ export default function App() {
 
       {/* FOOTER */}
       <footer className={`py-8 text-center text-sm border-t ${isDarkMode ? 'border-[#077A7D]/20 text-[#7AE2CF]' : 'border-[#7AE2CF]/30 text-[#077A7D]'}`}>
-        <p>© 2026 John Doe - Applied Data Science Student.</p>
+        <p>© 2026 Bistiana S. Ridho - Applied Data Science Student.</p>
       </footer>
     </div>
   );

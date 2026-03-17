@@ -1,24 +1,27 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ExternalLink, LineChart } from 'lucide-react';
+import { Github, Linkedin, Mail, Instagram, LineChart } from 'lucide-react'; 
 
 export default function AboutMe({ theme, isDarkMode }) {
+  
+  // Daftar tautan sosial media Anda (Silakan ganti URL-nya sesuai milik Anda)
+  const socialLinks = [
+    { Icon: Github, url: "https://github.com/bistiana29" },
+    { Icon: Linkedin, url: "https://www.linkedin.com/in/bistiana-syafina-ridho-89693a2a4" },
+    { Icon: Mail, url: "mailto:bistianafn29.@gmail.com" },
+    { Icon: Instagram, url: "https://www.instagram.com/bistianafn" }
+  ];
+
   return (
     <section id="about" className="min-h-screen flex items-center pt-20 pb-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
           <div>
-            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-6 border ${
-              isDarkMode ? 'bg-[#215E61]/50 text-[#7AE2CF] border-[#7AE2CF]/30' : 'bg-[#7AE2CF]/20 text-[#077A7D] border-[#077A7D]/30'
-            }`}>
-              <span className="relative flex h-2 w-2">
-                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${theme.accentBg} opacity-75`}></span>
-                <span className={`relative inline-flex rounded-full h-2 w-2 ${theme.accentBg}`}></span>
-              </span>
-              Seeking Data Analyst / Data Scientist Roles
-            </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight leading-tight">
               Hi, I'm <br/>
-              <span className={theme.accent}>John Doe</span>
+              <span className={theme.accent}>
+                Bistiana Syafina <br/>
+                Ridho
+                </span>
             </h1>
             <h2 className={`text-2xl font-light ${theme.textMuted}`}>
               Applied Data Science Student.
@@ -30,15 +33,21 @@ export default function AboutMe({ theme, isDarkMode }) {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <button className={`px-6 py-3 font-semibold rounded-lg transition-colors flex items-center gap-2 shadow-lg shadow-[#FE7F2D]/20 ${theme.accentBg} text-[#F5EEDD] hover:opacity-90`}>
-              Download Resume <ExternalLink size={18} />
-            </button>
-            <div className="flex gap-2">
-              {[Github, Linkedin, Mail].map((Icon, i) => (
-                <button key={i} className={`p-3 border rounded-lg transition-colors ${theme.card} hover:${theme.accent} hover:border-[#FE7F2D]`}>
-                  <Icon size={20} />
-                </button>
-              ))}
+            <div className="flex gap-3">
+              {socialLinks.map((item, i) => {
+                const Icon = item.Icon;
+                return (
+                  <a 
+                    key={i} 
+                    href={item.url}
+                    target="_blank" // Membuka link di tab baru
+                    rel="noopener noreferrer" // Praktik keamanan standar untuk target="_blank"
+                    className={`p-3 border rounded-lg transition-colors ${theme.card} hover:${theme.accent} hover:border-[#FE7F2D] cursor-pointer`}
+                  >
+                    <Icon size={20} />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
