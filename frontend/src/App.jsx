@@ -3,6 +3,7 @@ import { Sun, Moon } from 'lucide-react';
 
 // Import komponen halaman yang sudah dipisah
 import AboutMe from './pages/AboutMe';
+import EduAndExp from './pages/EduAndExp';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Dashboard from './pages/Dashboard';
@@ -29,7 +30,7 @@ export default function App() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      const sections = ['about', 'skills', 'projects', 'dashboard'];
+      const sections = ['about', 'skills', 'eduandexp', 'projects', 'dashboard'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -57,6 +58,7 @@ export default function App() {
   const navItems = [
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Tech Stack' },
+    { id: 'eduandexp', label: 'Edu & Exp' },
     { id: 'projects', label: 'Projects' },
     { id: 'dashboard', label: 'Dashboard' },
   ];
@@ -75,7 +77,7 @@ export default function App() {
               <div className={`w-8 h-8 rounded-lg ${theme.accentBg} flex items-center justify-center text-[#F5EEDD] text-sm font-bold shadow-md shadow-[#FE7F2D]/20`}>
                 BR
               </div>
-              <span>bistianafn29</span>
+              <span>bistianaridho</span>
             </div>
             
             {/* Tombol Dark Mode dipindah ke sini untuk versi HP */}
@@ -119,6 +121,7 @@ export default function App() {
       <main className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-12">
         <AboutMe theme={theme} isDarkMode={isDarkMode} />
         <Skills theme={theme} isDarkMode={isDarkMode} />
+        <EduAndExp theme={theme} isDarkMode={isDarkMode} />
         <Projects theme={theme} isDarkMode={isDarkMode} />
         <Dashboard theme={theme} isDarkMode={isDarkMode} />
       </main>
