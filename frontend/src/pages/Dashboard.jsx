@@ -9,7 +9,7 @@ export default function Dashboard({ theme, isDarkMode }) {
         <p className={theme.textMuted}>A live demonstration of my data tracking capabilities. This is real-time (mocked) data of how users interact with this portfolio.</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
         
         {/* KPI Cards */}
         <div className="lg:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-6">

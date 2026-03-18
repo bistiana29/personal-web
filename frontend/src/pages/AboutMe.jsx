@@ -1,27 +1,28 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Instagram, LineChart } from 'lucide-react'; 
+import { Github, Linkedin, Mail, Instagram } from 'lucide-react'; 
+import profileImg from '../assets/photo_profile.png'; 
 
 export default function AboutMe({ theme, isDarkMode }) {
   
-  // Daftar tautan sosial media Anda (Silakan ganti URL-nya sesuai milik Anda)
   const socialLinks = [
     { Icon: Github, url: "https://github.com/bistiana29" },
     { Icon: Linkedin, url: "https://www.linkedin.com/in/bistiana-syafina-ridho-89693a2a4" },
-    { Icon: Mail, url: "mailto:bistianafn29.@gmail.com" },
+    { Icon: Mail, url: "mailto:bistianafn29@gmail.com" },
     { Icon: Instagram, url: "https://www.instagram.com/bistianafn" }
   ];
 
-return (
-    // Mengubah min-h-screen agar bisa menyesuaikan konten di HP
+  return (
     <section id="about" className="min-h-[100svh] flex items-center pt-32 pb-16">
-      {/* Menggunakan gap-8 di HP, gap-12 di Laptop */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+      {/* PERBAIKAN 1: Lebar Page & Proporsi
+        Mengubah dari pembagian 50:50 menjadi sistem 12-kolom. 
+        Teks mengambil 7 bagian (lebih lega), gambar mengambil 5 bagian.
+      */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center w-full">
         
-        <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+        {/* Kolom Teks */}
+        <div className="lg:col-span-7 space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
           <div>
-            
-            {/* PERBAIKAN UKURAN FONT DI SINI */}
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-3 md:mb-4 tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 md:mb-4 tracking-tight leading-tight">
               Hi, I'm <br/>
               <span className={theme.accent}>Bistiana Syafina Ridho</span>
             </h1>
@@ -30,7 +31,7 @@ return (
             </h2>
           </div>
           
-          <p className={`text-base md:text-lg leading-relaxed max-w-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+          <p className={`text-base md:text-lg leading-relaxed max-w-xl xl:max-w-2xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
             Passionate about transforming raw data into actionable business insights. Experienced in statistical modeling, machine learning, and data visualization. Currently a final-year student at Politeknik Elektronika Negeri Surabaya (Electronics Engineering Institute of Surabaya) with experience in organizational activities and volunteer work. Ready to tackle real-world data challenges and contribute to data driven decision making.
           </p>
 
@@ -54,21 +55,36 @@ return (
           </div>
         </div>
 
-        {/* Gambar chart di kanan disembunyikan di HP, muncul mulai ukuran Tablet (md) ke atas */}
-        <div className="relative hidden md:block animate-in fade-in zoom-in duration-1000 mt-8 lg:mt-0">
-          <div className="aspect-square relative flex items-center justify-center max-w-md mx-auto lg:max-w-none">
-             <div className={`absolute inset-0 rounded-full blur-3xl opacity-20 ${isDarkMode ? 'bg-[#7AE2CF]' : 'bg-[#077A7D]'}`}></div>
-             <div className={`w-3/4 h-3/4 rounded-3xl border-2 rotate-3 transform transition-transform hover:rotate-0 duration-500 flex flex-col items-center justify-center overflow-hidden ${isDarkMode ? 'bg-[#06202B] border-[#077A7D]' : 'bg-white border-[#7AE2CF]'}`}>
-                <LineChart size={60} strokeWidth={1} className={`lg:w-20 lg:h-20 ${theme.accent}`} />
-                <div className="mt-8 w-full px-8 space-y-3">
-                  <div className={`h-2 rounded-full w-full ${isDarkMode ? 'bg-[#215E61]' : 'bg-[#7AE2CF]/30'}`}>
-                    <div className={`h-full rounded-full w-3/4 ${theme.accentBg}`}></div>
-                  </div>
-                  <div className={`h-2 rounded-full w-full ${isDarkMode ? 'bg-[#215E61]' : 'bg-[#7AE2CF]/30'}`}>
-                    <div className="h-full rounded-full w-1/2 bg-[#7AE2CF]"></div>
-                  </div>
-                </div>
+        {/* PERBAIKAN 2: Tata Letak Foto
+          Kolom gambar dengan bingkai yang dirancang khusus untuk foto tanpa background.
+        */}
+        <div className="lg:col-span-5 relative hidden md:block animate-in fade-in zoom-in duration-1000 mt-10 lg:mt-0">
+          {/* Pembatas ukuran maksimal gambar agar tidak "raksasa" di layar besar */}
+          <div className="relative w-full max-w-[280px] lg:max-w-[360px] mx-auto">
+             
+             {/* Cahaya di belakang foto */}
+             <div className={`absolute -inset-4 rounded-full blur-3xl opacity-30 ${isDarkMode ? 'bg-[#7AE2CF]' : 'bg-[#077A7D]'}`}></div>
+             
+             {/* Bingkai Foto - Menggunakan rasio portrait (4/5) */}
+             <div className={`relative aspect-[4/5] rounded-[2rem] border overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 duration-500 ${
+               isDarkMode 
+                 ? 'bg-gradient-to-b from-[#215E61]/30 to-[#06202B] border-[#077A7D] shadow-[#077A7D]/20' 
+                 : 'bg-gradient-to-b from-white to-[#F5EEDD] border-[#7AE2CF] shadow-[#7AE2CF]/20'
+             }`}>
+                {/* object-bottom memastikan bagian bawah foto Anda menempel 
+                  sempurna ke dasar garis kotak, tidak melayang.
+                */}
+                <img 
+                  src={profileImg} 
+                  alt="Bistiana Syafina Ridho" 
+                  className="absolute inset-0 w-full h-full object-cover object-bottom pt-6 drop-shadow-2xl"
+                />
              </div>
+             
+             {/* Aksen hiasan (opsional, membuat desain lebih manis) */}
+             <div className={`absolute -bottom-6 -right-6 w-24 h-24 rounded-full border-4 opacity-50 -z-10 ${isDarkMode ? 'border-[#FE7F2D]' : 'border-[#FE7F2D]'}`}></div>
+             <div className={`absolute -top-4 -left-4 w-12 h-12 rounded-full opacity-20 -z-10 ${isDarkMode ? 'bg-[#7AE2CF]' : 'bg-[#077A7D]'}`}></div>
+
           </div>
         </div>
         

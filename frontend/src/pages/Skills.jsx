@@ -9,7 +9,7 @@ export default function Skills({ theme, isDarkMode }) {
         <p className={`${theme.textMuted} max-w-2xl mx-auto`}>The tools and technologies I use to extract insights and build predictive models.</p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
         {[
           { category: 'Languages', items: ['Python', 'SQL', 'R', 'Bash'] },
           { category: 'Machine Learning', items: ['Scikit-Learn', 'TensorFlow', 'XGBoost', 'PyTorch'] },

@@ -11,7 +11,7 @@ export default function Projects({ theme, isDarkMode }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10">
         {[
           { title: 'Customer Churn Prediction', icon: Users, tag: 'Classification', desc: 'Built a Random Forest model to predict telecom customer churn with 89% accuracy, identifying key risk factors.' },
           { title: 'E-Commerce Sales Dashboard', icon: BarChart3, tag: 'Data Viz', desc: 'Developed an interactive PowerBI dashboard for regional managers to track KPIs, resulting in a 15% improvement in reporting efficiency.' },
