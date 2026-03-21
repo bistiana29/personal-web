@@ -54,7 +54,7 @@ export default function EduAndExp({ theme, isDarkMode }) {
 
   return (
     // Mengikuti style Tech Stack: Full Screen, Vertical Center, Full Flex Width
-    <section id="eduandexp" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-[#077A7D]/20 w-full px-6 md:px-12 lg:px-20 xl:px-32">
+    <section id="eduandexp" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-[#077A7D]/20">
       
       {/* Grid 2 Kolom (Mobile Stack, lg: Side-by-Side) gap besar */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start w-full">

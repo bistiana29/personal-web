@@ -70,7 +70,7 @@ export default function App() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md border-b ${
         isScrolled ? `${theme.navBg} border-[#077A7D]/30 py-3 shadow-lg shadow-[#06202B]/10` : 'bg-transparent border-transparent py-3 md:py-5'
       }`}>
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
+        <div className="w-full px-6 md:px-12 lg:px-24 xl:px-32 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
           
           <div className="w-full md:w-auto flex justify-between items-center">
             <div className="font-bold text-xl tracking-tight flex items-center gap-2">
@@ -118,7 +118,7 @@ export default function App() {
       </nav>
 
       {/* MAIN CONTENT */}
-      <main className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-12">
+      <main className="w-full px-6 md:px-12 lg:px-24 xl:px-32">
         <AboutMe theme={theme} isDarkMode={isDarkMode} />
         <Skills theme={theme} isDarkMode={isDarkMode} />
         <EduAndExp theme={theme} isDarkMode={isDarkMode} />
