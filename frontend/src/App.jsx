@@ -3,7 +3,6 @@ import { Sun, Moon } from 'lucide-react';
 
 // Import komponen halaman yang sudah dipisah
 import AboutMe from './pages/AboutMe';
-import EduAndExp from './pages/EduAndExp';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Dashboard from './pages/Dashboard';
@@ -30,7 +29,7 @@ export default function App() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      const sections = ['about', 'skills', 'eduandexp', 'projects', 'dashboard'];
+      const sections = ['about', 'skills', 'projects', 'dashboard'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -58,7 +57,6 @@ export default function App() {
   const navItems = [
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Tech Stack' },
-    { id: 'eduandexp', label: 'Edu & Exp' },
     { id: 'projects', label: 'Projects' },
     { id: 'dashboard', label: 'Dashboard' },
   ];
@@ -70,9 +68,10 @@ export default function App() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md border-b ${
         isScrolled ? `${theme.navBg} border-[#077A7D]/30 py-3 shadow-lg shadow-[#06202B]/10` : 'bg-transparent border-transparent py-3 md:py-5'
       }`}>
-        <div className="w-full px-6 md:px-12 lg:px-24 xl:px-32 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
+        <div className="w-full px-6 md:px-12 lg:px-24 xl:px-32 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0">
           
-          <div className="w-full md:w-auto flex justify-between items-center">
+          {/* 1. BAGIAN KIRI (Logo) - Menggunakan md:flex-1 agar lebarnya seimbang dengan bagian kanan */}
+          <div className="w-full md:flex-1 flex justify-between items-center">
             <div className="font-bold text-xl tracking-tight flex items-center gap-2">
               <div className={`w-8 h-8 rounded-lg ${theme.accentBg} flex items-center justify-center text-[#F5EEDD] text-sm font-bold shadow-md shadow-[#FE7F2D]/20`}>
                 BR
@@ -80,7 +79,7 @@ export default function App() {
               <span>bistianaridho</span>
             </div>
             
-            {/* Tombol Dark Mode dipindah ke sini untuk versi HP */}
+            {/* Tombol Dark Mode khusus versi HP tetap di sini */}
             <button 
               onClick={() => setIsDarkMode(!isDarkMode)}
               className={`md:hidden p-2 rounded-full border transition-colors ${theme.card} hover:${theme.text}`}
@@ -89,7 +88,7 @@ export default function App() {
             </button>
           </div>
           
-          {/* Menu Items - Bisa di-scroll menyamping di HP (overflow-x-auto) */}
+          {/* 2. BAGIAN TENGAH (Menu Navigasi) - Sekarang posisinya akan absolut di tengah layar */}
           <div className="w-full md:w-auto flex items-center gap-2 p-1 rounded-full border border-[#077A7D]/20 overflow-x-auto hide-scrollbar" style={{ backgroundColor: isDarkMode ? 'rgba(33, 94, 97, 0.3)' : 'rgba(122, 226, 207, 0.2)' }}>
             {navItems.map((item) => (
               <button
@@ -106,13 +105,15 @@ export default function App() {
             ))}
           </div>
 
-          {/* Tombol Dark Mode untuk Desktop */}
-          <button 
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className={`hidden md:block p-2 rounded-full border transition-colors ${theme.card} hover:${theme.text}`}
-          >
-            {isDarkMode ? <Sun size={20} className="text-[#FE7F2D]" /> : <Moon size={20} className="text-[#077A7D]" />}
-          </button>
+          {/* 3. BAGIAN KANAN (Tombol Dark Mode Desktop) - Menggunakan md:flex-1 dan justify-end */}
+          <div className="hidden md:flex md:flex-1 justify-end">
+            <button 
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className={`p-2 rounded-full border transition-colors ${theme.card} hover:${theme.text}`}
+            >
+              {isDarkMode ? <Sun size={20} className="text-[#FE7F2D]" /> : <Moon size={20} className="text-[#077A7D]" />}
+            </button>
+          </div>
 
         </div>
       </nav>
@@ -121,7 +122,6 @@ export default function App() {
       <main className="w-full px-6 md:px-12 lg:px-24 xl:px-32">
         <AboutMe theme={theme} isDarkMode={isDarkMode} />
         <Skills theme={theme} isDarkMode={isDarkMode} />
-        <EduAndExp theme={theme} isDarkMode={isDarkMode} />
         <Projects theme={theme} isDarkMode={isDarkMode} />
         <Dashboard theme={theme} isDarkMode={isDarkMode} />
       </main>
