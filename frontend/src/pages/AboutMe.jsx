@@ -31,8 +31,12 @@ export default function AboutMe({ theme, isDarkMode }) {
             </h2>
           </div>
           
-          <p className={`text-base md:text-lg leading-relaxed max-w-xl xl:max-w-2xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-            Passionate about transforming raw data into actionable business insights. Experienced in statistical modeling, machine learning, and data visualization. Currently a final-year student at Politeknik Elektronika Negeri Surabaya (Electronics Engineering Institute of Surabaya) with experience in organizational activities and volunteer work. Ready to tackle real-world data challenges and contribute to data driven decision making.
+          <p className={`text-base md:text-lg leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+            Passionate about transforming raw data into actionable business insights. Experienced in statistical<br className="hidden lg:block" />
+            modeling, machine learning, and data visualization. Currently a final-year student at Politeknik<br className="hidden lg:block" />
+            Elektronika Negeri Surabaya (Electronics Engineering Institute of Surabaya) with experience in<br className="hidden lg:block" />
+            organizational activities and volunteer work. Ready to tackle real-world data challenges and<br className="hidden lg:block" />
+            contribute to data driven decision making.<br className="hidden lg:block" />
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2 md:pt-4">

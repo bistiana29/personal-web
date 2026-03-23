@@ -1,17 +1,39 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:15
+    container_name: db-personal_web
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
+
+  backend:
+    build: ./backend
+    container_name: backend-personal_web
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: db
+      DB_NAME: portfolio
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: personal_web_frontend
+    container_name: frontend-personal_web
     ports:
-      # Port Vite default
       - "5173:5173"
     volumes:
-      # Mapping folder lokal ke dalam kontainer (kunci agar Hot-Reload jalan)
       - ./frontend:/app
-      # Hindari menimpa node_modules di dalam kontainer dengan lokal
       - /app/node_modules
     restart: unless-stopped

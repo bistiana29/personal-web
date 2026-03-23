@@ -52,16 +52,23 @@ export default function Skills({ theme, isDarkMode }) {
   // Komponen Kotak Skill
   const SkillBox = ({ item }) => {
     return (
-      <div className={`relative group flex flex-col items-center justify-center flex-shrink-0 w-36 h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-3xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer ${
+      <div className={`relative group flex flex-col items-center justify-center flex-shrink-0 w-36 h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-3xl border transition-all duration-300 hover:-translate-y-2 cursor-pointer ${
+        // Perbaikan kontras card: saat light mode dibuat full putih (bg-white) dan bayangan lebih terasa
         isDarkMode
-          ? 'bg-[#06202B]/80 border-[#077A7D]/40 hover:border-[#FE7F2D] hover:shadow-[#FE7F2D]/10'
-          : 'bg-white/80 border-[#7AE2CF] hover:border-[#FE7F2D] hover:shadow-[#FE7F2D]/20'
+          ? 'bg-[#06202B]/80 border-[#077A7D]/40 hover:border-[#FE7F2D] hover:shadow-[0_10px_30px_rgba(254,127,45,0.15)]'
+          : 'bg-white border-[#7AE2CF]/60 hover:border-[#FE7F2D] shadow-xl shadow-[#7AE2CF]/5 hover:shadow-[0_10px_30px_rgba(254,127,45,0.2)]'
       }`}>
 
-        {/* LOGO AREA - Diperbesar juga untuk mengimbangi card */}
         <div className="mb-4 h-14 w-14 md:h-20 md:w-20 lg:h-24 lg:w-24 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-3">
           {item.imgSrc ? (
-            <img src={item.imgSrc} alt={item.name} className="object-contain w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
+            // PERBAIKAN LOGO: Tambahkan drop-shadow glow putih saat isDarkMode true
+            <img 
+              src={item.imgSrc} 
+              alt={item.name} 
+              className={`object-contain w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 ${
+                isDarkMode ? 'drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]' : 'drop-shadow-sm'
+              }`} 
+            />
           ) : (
             <div className={`w-full h-full rounded-xl flex items-center justify-center font-bold text-2xl md:text-3xl transition-colors duration-300 shadow-inner ${
               isDarkMode ? 'bg-[#215E61]/50 text-[#7AE2CF] group-hover:bg-[#FE7F2D] group-hover:text-[#F5EEDD]' : 'bg-[#7AE2CF]/30 text-[#077A7D] group-hover:bg-[#FE7F2D] group-hover:text-[#F5EEDD]'
@@ -71,16 +78,14 @@ export default function Skills({ theme, isDarkMode }) {
           )}
         </div>
 
-        {/* NAMA SKILL */}
         <span className={`text-sm md:text-lg font-bold text-center px-2 transition-all duration-300 group-hover:-translate-y-3 ${
-          isDarkMode ? 'text-slate-300 group-hover:text-white' : 'text-slate-700 group-hover:text-[#06202B]'
+          isDarkMode ? 'text-slate-200 group-hover:text-white' : 'text-slate-700 group-hover:text-[#06202B]'
         }`}>
           {item.name}
         </span>
 
-        {/* DESKRIPSI OVERLAY */}
         <div className={`absolute bottom-0 left-0 w-full p-2 md:p-3 text-center transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-b-3xl ${
-          isDarkMode ? 'bg-[#215E61]/90 backdrop-blur-sm border-t border-[#077A7D]/30' : 'bg-[#7AE2CF]/90 backdrop-blur-sm border-t border-white/50'
+          isDarkMode ? 'bg-[#215E61]/95 backdrop-blur-md border-t border-[#077A7D]/40' : 'bg-[#7AE2CF]/95 backdrop-blur-md border-t border-white/60'
         }`}>
           <p className={`text-[10px] md:text-sm font-medium leading-tight px-1 pb-1 ${
              isDarkMode ? 'text-[#F5EEDD]' : 'text-[#06202B]'
@@ -94,8 +99,7 @@ export default function Skills({ theme, isDarkMode }) {
   };
 
   return (
-    <section id="skills" className="min-h-[100svh] flex flex-col justify-full pt-18 md:pt-18 pb-10 w-full overflow-hidden">
-
+    <section id="skills" className="min-h-[100svh] flex flex-col justify-start pt-10 md:pt-10 pb-10 w-full overflow-hidden">
       {/* JUDUL */}
       <div className="text-center mb-10 md:mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Stack</h2>

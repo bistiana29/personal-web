@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        // Inter untuk body text (otomatis menggantikan font default Tailwind)
+        sans: ['Inter', 'sans-serif'],
+        // Montserrat khusus untuk heading
+        heading: ['Montserrat', 'sans-serif'], 
+      },
+    },
   },
   plugins: [],
 }

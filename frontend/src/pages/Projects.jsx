@@ -45,7 +45,7 @@ export default function Projects({ theme, isDarkMode }) {
   ];
 
   return (
-    <section id="projects" className="min-h-[100svh] flex flex-col justify-start pt-10 pb-10 border-t border-[#077A7D]/20 w-full">
+    <section id="projects" className="min-h-[100svh] flex flex-col justify-start pt-10 md:pt-10 pb-10 w-full">
 
       {/* HEADER */}
       <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
